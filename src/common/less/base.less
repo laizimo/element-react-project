@@ -1,0 +1,25 @@
+.border-1px {
+    &:after{
+        @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+            -webkit-transform: scaleX(0.7);
+            transform: scaleY(0.7);
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 2.0), (min-device-pixel-ratio: 2.0) {
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+        }
+    }
+}
+
+.clearfix{
+    display: inline-block;
+    &:after{
+        display: block;
+        content: " ";
+        height: 0;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+    }
+}

@@ -1,0 +1,29 @@
+@import '../../common/less/mixin.less';
+
+.navbar{
+    height: .8rem;
+    position: relative;
+    line-height: .8rem;
+    #border-1px(rgba(7,17,27,0.1));
+
+    ul{
+        display: flex;
+        justify-content: center;
+        height: 100%;
+
+        .nav-options{
+            flex: 1;
+            text-align: center;
+
+            a{
+                display: block;
+                font-size: 14px;
+                color: rgb(77, 85, 93);
+
+                &.active{
+                    color: rgb(240, 20, 20);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+@import '../../common/less/mixin.less';
+
+ul {
+    display: block;
+    position: relative;
+
+    &.comment-48{
+        height: .48rem;
+    }
+
+    li{
+        display: inline-block;
+        background-size: 100% 100%;
+        vertical-align: top;
+        
+        &.star-24{
+            width: .2rem;
+            height: .2rem;
+            margin-right: .6rem;
+        }
+
+        &.star-24-on{
+            #bg-image('star24_on');
+        }
+
+        &.star-24-half{
+            #bg-image('star24_half');
+        }
+
+        &.star-24-off{
+            #bg-image('star24_off');
+        }
+
+        &.star-36{
+            width: .3rem;
+            height: .3rem;
+            margin-right: .12rem;
+        }
+
+        &.star-36-on{
+            #bg-image('star36_on');
+        }
+
+        &.star-36-half{
+            #bg-image('star36_half');
+        }
+
+        &.star-36-off{
+            #bg-image('star36_off');
+        }
+
+        &.star-48{
+            width: .4rem;
+            height: .4rem;
+            margin-right: .44rem;
+        }
+
+        &.star-48-on{
+            #bg-image('star48_on');
+        }
+
+        &.star-48-half{
+            #bg-image('star48_half');
+        }
+
+        &.star-48-off{
+            #bg-image('star48_off');
+        }
+    }
+}

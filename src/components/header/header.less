@@ -1,0 +1,276 @@
+@import '../../common/less/mixin.less';
+
+header {
+    position: relative;
+    height: 2.78rem;
+    background-size: 100% 100%;
+    background-color: rgba(7, 17, 27, .5);
+    color: #fff;
+    overflow: hidden;
+
+    .content-wrap {
+        position: relative;
+        padding: .48rem .24rem .36rem .48rem;
+
+        .avatar{
+            position: relative;
+            width: 1.28rem;
+            height: 1.28rem;
+            display: inline-block;
+
+            img{
+                width: 100%;
+                border-radius: 5px;
+            }
+        }
+
+        .content{
+            position: relative;
+            margin-left: .32rem;
+            display: inline-block;
+            vertical-align: top;
+            
+            .title{
+                margin: .04rem 0 .16rem 0;
+                height: .36rem;
+
+                .brand{
+                    #bg-image('brand');
+                    width: .6rem;
+                    height: .36rem;
+                    display: inline-block;
+                    background-size: 100% 100%;
+                    vertical-align: top;
+                }
+
+                .name {
+                    margin-left: .12rem;
+                    font-size: 16px;
+                    color: rgb(255, 255, 255);
+                    font-weight: bold;
+                    line-height: 18px;
+                    display: inline-block;
+                    vertical-align: top;
+                }
+            }
+
+            .description {
+                display: block;
+                margin-top: .16rem;
+                font-size: 12px;
+                color: rgb(255, 255, 255);
+                font-weight: 200;
+                line-height: 12px;
+                margin-bottom: .2rem;
+            }
+
+            .support{
+                margin-bottom: .04rem;
+                height: .24rem;
+                .type{
+                    display: inline-block;
+                    vertical-align: top;
+                    width: .24rem;
+                    height: .24rem;
+                }
+
+                .description {
+                    display: inline-block;
+                    font-size: 10px;
+                    vertical-align: top;
+                    margin: 0;
+                    margin-left: .08rem;
+                }
+            }
+        }
+
+        .support-count{
+            position: absolute;
+            height: .48rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            right: .24rem;
+            bottom: .28rem;
+            padding: 0 .16rem;
+            line-height: .48rem;
+            border-radius: .28rem;
+            text-align: center;
+
+            .number{
+                vertical-align: top;
+                font-size: 10px;
+            }
+
+            .icon-keyboard_arrow_right{
+                margin-left: .04rem;
+                line-height: .48rem;
+                font-size: 10px;
+            }
+        }
+    }
+
+    .bulletin-wrapper{
+        height: .56rem;
+        background-color: rgba(7, 17, 27, 0.2);
+        padding: 0 .44rem 0 .24rem;
+        line-height: .56rem;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .bulletin{
+            display: inline-block;
+            vertical-align: top;
+            width: .44rem;
+            height: .24rem;
+            #bg-image('bulletin');
+            margin-top: .16rem;
+            background-size: 100% 100%;
+        }
+
+        .bulletin-content{
+            font-size: 10px;
+            line-height: .56rem;
+            margin: 0 .08rem;
+        }
+
+        .icon-keyboard_arrow_right{
+            position: absolute;
+            right: .24rem;
+            top: .08rem;
+            line-height: .56rem;
+            font-size: 10px;
+        }
+    }
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        filter: blur(10px);
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .detail{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: rgba(7, 17, 27, 0.8);
+        text-align: center;
+        z-index: 100;
+
+        .detail-wrapper{
+            height: 100%;
+            min-height: 100%;
+
+            .detail-main{
+                margin-top: 1.28rem;
+                padding-bottom: 1.28rem;
+                .title{
+                    display: block;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 16px;
+                    margin: 0 auto;
+                }
+
+                .stars{
+                    height: .48rem;
+                    margin-top: .32rem;
+                }
+
+                .info-content{
+                    display: block;
+                    margin-top: .56rem;
+
+                    .line {
+                        vertical-align: middle;
+                        width: 2.24rem;
+                        font-size: 0;
+                        border-top: 1px solid rgba(255, 255, 255, 0.2);
+                    }
+
+                    .info{
+                        font-size: 14px;
+                        font-weight: 700;
+                        margin-left: .24rem;
+                        margin-right: .24rem;
+                    }
+                }
+
+                .discount-list{
+                    display: block;
+                    margin-top: .48rem;
+                    text-align: left;
+                    margin-left: .96rem;
+
+                    .support{
+                        margin-top: .24rem;
+                        display: block;
+
+                        .type{
+                            width: .32rem;
+                            height: .32rem;
+                            display: inline-block;
+                            margin-right: .12rem;
+                        }
+
+                        .description{
+                            font-size: 12px;
+                            font-weight: 200;
+                            line-height: 12px;
+                        }
+                    }
+                }
+
+                .bulletin-content{
+                    display: block;
+                    padding: .48rem .96rem 0;
+                    font-size: 12px;
+                    font-weight: 200;
+                    line-height: 24px;
+                    text-align: left;
+                }
+            }
+        }
+
+        .detail-close{
+            position: relative;
+            width: .64rem;
+            height: .64rem;
+            font-size: 32px;
+            margin: -1.28rem auto 0 auto;
+            bottom: 0;
+            clear: both;
+        }
+
+    }
+
+    .detail-enter{
+        opacity: 0.1;
+
+        &.detail-enter-active{
+            opacity: 1;
+            transition: opacity 500ms ease-in;
+        }
+    }
+
+    .detail-leave{
+        opacity: 1;
+        
+        &.detail-leave-active{
+            opacity: 0.1;
+            transition: opacity 300ms ease-out;
+        }
+    }
+}

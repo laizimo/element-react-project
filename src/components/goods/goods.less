@@ -1,0 +1,169 @@
+@import '../../common/less/mixin.less';
+
+.goods{
+    position: absolute;
+    top: 3.58rem;
+    bottom: 1.16rem;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    .menu-wrapper{
+        flex: 0 0 1.6rem;
+        width: 1.6rem;
+        background-color: #f3f5f7;
+
+        .menu-list{
+            
+            .menu-item{
+                height: 1.08rem;
+                width: 1.12rem;
+                padding-left: .24rem;
+                padding-right: .24rem;
+                border-bottom: 1px solid rgba(7, 17, 27, .1);
+                display: table;
+
+                &.current{
+                    background: rgb(255, 255, 255);
+                }
+
+                .type{
+                    width: .24rem;
+                    height: .24rem;
+                    display: inline-block;
+                    vertical-align: top;
+
+                    &.decrease{
+                        #bg-image('decrease_1');
+                    }
+
+                    &.discount{
+                        #bg-image('discount_1');
+                    }
+
+                    &.guarantee{
+                        #bg-image('guarantee_1');
+                    }
+
+                    &.invoice{
+                        #bg-image('invoice_1');
+                    }
+
+                    &.special{
+                        #bg-image('special_1');
+                    }
+                }
+
+                .name{
+                    font-size: 12px;
+                    color: rgb(24, 20, 20);
+                    font-weight: 200;
+                    line-height: 14px;
+                    width: 1.12rem;
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    .goods-wrapper{
+        flex: 1;
+
+        .goods-list{
+            width: 100%;
+            position: relative;
+
+            .goods-item{
+                width:100%;
+                
+                .goods-title{
+                    width: 100%;
+                    height: .52rem;
+                    line-height: .52rem;
+                    padding-left: .28rem;
+                    border-left: 1px solid #d9dde1;
+                    background-color: #f3f5f7;
+                    font-size: 12px;
+                    color: rgb(147, 153, 159);
+                }
+
+                .foods-list{
+                    width: 100%;
+
+                    .foods-item{
+                        width: 100%;
+                        padding: .36rem;
+                        box-sizing: border-box;
+                        #border-1px(rgba(7,17,27,0.1));
+
+                        .food{
+                            width: 100%;
+                            display: flex;
+                            position: relative;
+
+                            .food-image{
+                                
+                                width: 1.14rem;
+                                height: 1.14rem;
+                            }
+
+                            .food-content{
+                                flex: 1;
+                                padding-left: .2rem;
+                                padding-top: .04rem;
+
+                                .food-name{
+                                    font-size: 14px;
+                                    color: rgb(7, 17, 27);
+                                    line-height: 14px;
+                                    height: 14px;
+                                }
+
+                                .food-description{
+                                    margin-top: .16rem;
+                                    font-size: 10px;
+                                    color: rgb(147, 153, 159);
+                                    line-height: 10px;
+                                }
+
+                                .food-info{
+                                    margin-top: .16rem;
+                                    font-size: 10px;
+                                    color: rgb(147, 153, 159);
+                                    line-height: 10px;
+
+                                    .food-rating{
+                                        margin-left: .24rem;
+                                    }
+                                }
+
+                                .food-price{
+                                    margin-top: .16rem;
+                                    
+                                    .current{
+                                        font-size: 14px;
+                                        color: rgb(240, 20, 20);
+                                    }
+
+                                    .old{
+                                        font-size: 10px;
+                                        color: rgb(147, 153, 159);
+                                        text-decoration: line-through;
+                                        margin-left: .16rem;
+                                    }
+                                }
+                            }
+
+                            .cart-control{
+                                position: absolute;
+                                bottom: -0.3rem;
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

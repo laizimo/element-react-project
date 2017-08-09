@@ -1,0 +1,22 @@
+#border-1px(@color) {
+    position: relative;
+
+    &:after{
+        content: ' ';
+        width: 100%;
+        border-top: 1px solid @color;
+        position: absolute;
+        display: block;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+
+#bg-image(@img) {
+    background-image: url('../imgs/@{img}@2x.png');
+
+    @media (-webkit-min-device-pixel-radio: 3), (min-device-pixel-radio: 3) {
+        background-image: url('../imgs/@{img}@3x.png');
+    }
+}
