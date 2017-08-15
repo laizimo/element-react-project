@@ -116,7 +116,6 @@ export class Goods extends Component {
     handleClickIndex(e) {
         const el = e.currentTarget;
         const index = el.getAttribute('data-id');
-        console.log(index);
         const foodList = document.getElementsByClassName('goods-item');
         this.setState({
             currentIndex: index
@@ -136,7 +135,14 @@ export class Goods extends Component {
     }
 
     handleSubClick(e) {
-        const foodName = e.target.parentNode.parentNode.getAttribute('data-name');
+        let foodName = e.target;
+        while(true){
+            if(foodName.getAttribute('data-name')){
+                foodName = foodName.getAttribute('data-name');
+                break;
+            }
+            foodName = foodName.parentNode;
+        }
         const cart = this.state.cart;
         for(const index in cart) {
             if(cart[index].name === foodName) {
@@ -173,7 +179,6 @@ export class Goods extends Component {
         this.setState({
             cart: cart
         });
-        console.log(this.state.cart);
     }
 
     handleCartClear() {

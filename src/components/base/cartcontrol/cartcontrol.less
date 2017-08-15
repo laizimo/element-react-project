@@ -1,6 +1,28 @@
 .cart-control{
     display: block;
 
+    .sub-enter{
+        opacity: 0;
+        transform: translateX(100%);
+
+        &.sub-enter-active{
+            opacity: 1;
+            transform: translateX(0);
+            transition: all .3s ease-in;
+        }
+    }
+
+    .sub-leave{
+        opacity: 1;
+        transform: translateX(0);
+
+        &.sub-leave-active{
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all .3s ease-out;
+        }
+    }
+
     .sub-number{
         display: inline-block;
         vertical-align: top;

@@ -45,7 +45,6 @@ export class Header extends React.Component {
     }
 
     handleShowClick() {
-        console.log('show');
         this.setState({
             isDetail: true
         });

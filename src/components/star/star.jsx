@@ -28,7 +28,6 @@ function starJudge(score) {
 
 const Star = ({ size, score }) => {
     const classMap = starJudge(score);
-    console.log(classMap);
     const starSize = 'star-' + size;
 
     return (

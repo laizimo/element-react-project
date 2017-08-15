@@ -5,6 +5,7 @@ import { CartControl } from '../base/cartcontrol/cartcontrol.jsx';
 import BScroll from 'better-scroll';
 import './cart.less';
 
+
 export class Cart extends Component {
     constructor(props) {
         super(props);
@@ -29,37 +30,56 @@ export class Cart extends Component {
         }
     }
 
-    componentDidMount() {
-        const cart = this.props.cart;
-        if(cart.length !== 0) {
-            console.log(11);
+    componentWillReceiveProps(nextProps){
+        const cart = nextProps.cart;
+        const isShow = this.state.isShow;
+        if(cart.length === 0){
+            if(isShow){
+                this.setState({
+                    isShow: false
+                });
+            }
         }
     }
 
     componentDidUpdate() {
         const cart = this.props.cart;
         const isShow = this.state.isShow;
-        if(cart.length === 0) {
+        if(cart.length !== 0){
             if(isShow){
-                this.setState({
-                    isShow: false
-                });
-            }
-        }else{
-            if(isShow){
-                console.log(11);
-                this.__initScroll();
+                if(!this.cartScroll){
+                    this.__initScroll();
+                }else{
+                    this.cartScroll.refresh();
+                }
             }
         }
     }
 
     __initScroll() {
         const cartFood = this.refs.cartWrapper;
-        console.log(cartFood);
         this.cartScroll = new BScroll(cartFood, {
             click: true,
         });
     }
+
+    getNumber(name) {
+        const cart = this.props.cart;
+        let exist = false;
+        if(cart){
+            for(const value of cart) {
+                if(value.name === name) {
+                    return value.count;
+                }
+            }
+            if(!exist) {
+                return 0;
+            }
+        }else{
+            return 0;
+        }
+    }
+
 
     render() {
         const { cart, deliveryPrice, minPrice, handleClear, handleAddClick, handleSubClick } = this.props;
@@ -79,6 +99,7 @@ export class Cart extends Component {
         }else{
             satisfy = '去结算';
         }
+
 
         const cartFood = cart.map((item, index) => 
              (<li key={item.name} className="food-item">
@@ -112,30 +133,29 @@ export class Cart extends Component {
                         <span className="min-price">{satisfy}</span>
                     </div>
                 </div>
-                 <ReactCSSTransitionGroup transitionName="ball" transitionEnter={true}
-                         transitionEnterTimeout={200} transitionLeave={true} transitionLeaveTimeout={300}> 
+                <ReactCSSTransitionGroup transitionName="fold" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
                 {
                     isShow && 
-                    <div className="ball">
-                        <ReactCSSTransitionGroup transitionName="cart" transitionAppear={true} transitionAppearTimeout={500}>
-                            <div className="ball-container">
-                                <header className="ball-head border-1px">
-                                    <span className="cart-name">购物车</span>
-                                    <span className="cart-clear" onClick={handleClear}>清空</span>
-                                </header>
-                                <div ref="cartWrapper" className="cart-wrapper">
-                                    <ul className="food-list">
-                                        {
-                                            cartFood
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                        </ReactCSSTransitionGroup>
+                    <div className="shoppingcart-container">
+                        <header className="shoppingcart-head border-1px">
+                            <span className="shoppingcart-name">购物车</span>
+                            <span className="shoppingcart-clear" onClick={handleClear}>清空</span>
+                        </header>
+                        <div ref="cartWrapper" className="cart-wrapper">
+                            <ul className="food-list">
+                                {
+                                    cartFood
+                                }
+                            </ul>
+                        </div>
                     </div>
                 }
-                 </ReactCSSTransitionGroup> 
+                </ReactCSSTransitionGroup>
+                {
+                    isShow && <div className="shoppingcart-mask"></div>
+                }
             </div>
+            
         );
     }
 }

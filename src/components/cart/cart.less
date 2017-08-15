@@ -113,113 +113,105 @@
     }
 }
 
-.ball-enter{
-    opacity: 0;
+.fold-enter{
+    transform: translateY(100%);
 
-    &.ball-enter-active{
-        opacity: 1;
-        transition: opacity 200ms linear;
+    &.fold-enter-active{
+        transform: translateY(0);
+        transition: all .5s ease-in;
     }
 }
 
-.ball-leave{
-    opacity: 1;
-    .ball-leave-active{
-        opacity: 0;
-        transition:opacity 300ms ease-out;
+.fold-leave{
+    transform: translateY(0);
+
+    &.fold-leave-active{
+        transform: translateY(100%);
+        transition: all .5s ease-out;
     }
 }
 
-.ball{
+.shoppingcart-container{
+    left: 0;
     width: 100%;
     position: absolute;
-    top: 0;
-    bottom: 1.16rem;
-    left: 0;
-    background-color: rgba(7, 17, 27, 0.6);
+    bottom: 0.88rem;
+    z-index: 49;
+    background: rgb(255, 255, 255);
 
 
-    .cart-appear{
-        transform: translateY(100%);
 
-        &.cart-appear-active{
-            transform: translateY(0);
-            transition: transform 1000ms linear;
+    .shoppingcart-head{
+        height: .8rem;
+        padding-left: .36rem;
+        padding-right: .36rem;
+        background: #f3f5f7;
+        border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+
+        .shoppingcart-name{
+            font-size: 14px;
+            font-weight: 200;
+            color: rgb(7, 17, 27);
+            line-height: .8rem;
+        }
+
+        .shoppingcart-clear{
+            font-size: 12px;
+            float: right;
+            line-height: .8rem;
+            color: rgb(0, 160, 220);
         }
     }
 
-    .ball-container{
-        width: 100%;
-        height: auto;
-        position: absolute;
-        bottom: 0;
-        background: rgb(255, 255, 255);
+    .cart-wrapper{
+        overflow: hidden;
+        max-height: 3.84rem;
 
+        .food-list{
+            width: 100%;
 
+            .food-item{
+                height: .96rem;
+                padding: .24rem .36rem;
+                display: flex;
+                background: rgb(255, 255, 255);
+                box-sizing: border-box;
 
-        .ball-head{
-            height: .8rem;
-            padding-left: .36rem;
-            padding-right: .36rem;
-            background: #f3f5f7;
-            border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+                .food-name{
+                    flex: 1;
+                    font-size: 14px;
+                    color: rgb(7, 17, 27);
+                    line-height: .48rem;
+                }
 
-            .cart-name{
-                font-size: 14px;
-                font-weight: 200;
-                color: rgb(7, 17, 27);
-                line-height: .8rem;
-            }
+                .food-option{
 
-            .cart-clear{
-                font-size: 12px;
-                float: right;
-                line-height: .8rem;
-                color: rgb(0, 160, 220);
-            }
-        }
-
-        .cart-wrapper{
-            overflow: hidden;
-            max-height: 3.84rem;
-
-            .food-list{
-                width: 100%;
-
-                .food-item{
-                    height: .96rem;
-                    padding: .24rem .36rem;
-                    display: flex;
-                    background: rgb(255, 255, 255);
-                    box-sizing: border-box;
-
-                    .food-name{
-                        flex: 1;
+                    .food-price{
                         font-size: 14px;
-                        color: rgb(7, 17, 27);
+                        font-weight: 700;
+                        color: rgb(240, 20, 20);
                         line-height: .48rem;
+                        display: inline-block;
+                        vertical-align: top;
                     }
 
-                    .food-option{
-                        flex: 0 0 2.7rem;
-
-                        .food-price{
-                            font-size: 14px;
-                            font-weight: 700;
-                            color: rgb(240, 20, 20);
-                            line-height: .48rem;
-                            margin-right: .36rem;
-                            display: inline-block;
-                            vertical-align: top;
-                        }
-
-                        .cart-control{
-                            display: inline-block;
-                        }
-                    } 
-                }
+                    .cart-control{
+                        margin-left: .36rem;
+                        display: inline-block;
+                    }
+                } 
             }
         }
     }
+}
+
+.shoppingcart-mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 48;
+    background-color: rgba(7,17,27,0.6);
 }
 
