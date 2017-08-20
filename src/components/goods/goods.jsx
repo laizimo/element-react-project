@@ -7,6 +7,7 @@ import BScroll from 'better-scroll';
 import { Cart } from '../cart/cart.jsx';
 import AlloyTouch from 'alloytouch';
 import { CartControl } from '../base/cartcontrol/cartcontrol.jsx';
+import { GoodContent } from '../goodcontent/goodcontent.jsx';
 import './goods.less';
 
 class GoodItem extends Component{
@@ -96,7 +97,9 @@ export class Goods extends Component {
             classMap: ['decrease', 'discount', 'special', 'invoice', 'guarantee'],
             currentIndex: 0,
             number: {},
-            cart: []
+            cart: [],
+            showDetail: false,
+            foodDetail: null
         }
     }
 
@@ -188,9 +191,15 @@ export class Goods extends Component {
         });
     }
 
+    showDetail(food){
+        this.setState({
+            showDetail: true,
+            foodDetail: food
+        });
+    }
 
     render() {
-        const { goods, classMap, currentIndex } = this.state;
+        const { goods, classMap, currentIndex, showDetail, foodDetail } = this.state;
         const seller = this.props.seller;
         if(seller){
             var {deliveryPrice, minPrice} = seller;
@@ -218,6 +227,7 @@ export class Goods extends Component {
                         <GoodsWrapper goods={goods} cart={this.state.cart} handleSubClick={this.handleSubClick} handleAddClick={this.handleAddClick} />
                     </div>
                 </div>
+                <GoodContent show={showDetail} food={foodDetail} closeDetail={this.closeDetail} />
                 <Cart deliveryPrice={deliveryPrice} cart={this.state.cart} 
                 handleClear={this.handleCartClear} handleAddClick={this.handleAddClick} handleSubClick={this.handleSubClick} minPrice={minPrice} />
             </div>

@@ -1,0 +1,74 @@
+
+.comment{
+    width: 100%;
+    position: relative;
+
+    header{
+        padding: .24rem .36rem;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        border-bottom: 1px solid rgba(7, 17, 27, 0.1); 
+
+        .tab-group{
+            width: 100%;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+
+            &:after{
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            .btn{
+                padding: .16rem .24rem;
+                color: rgb(77, 85, 93);
+                line-height: .32rem;
+                font-size: 12px;
+                border-radius: .02rem;
+                position: relative;
+                float: left;
+
+                .count{
+                    font-size: 8px;
+                }
+            }
+
+            .filter-all{
+                background-color: rgb(0, 160, 220);
+            }
+
+            .filter-recommand{
+                background-color: rgba(0, 160, 220, 0.2);
+                margin-left: .16rem;
+            }
+
+            .filter-complaint{
+                background-color: rgba(77, 85, 93, 0.1);
+                margin-left: .16rem;
+            }
+
+            .active{
+                color: #fff;
+            }
+        }
+
+        .check-content{
+            padding: .24rem 0;
+            font-size: 12px;
+            color: rgb(147, 153, 159);
+            line-height: .48rem;
+
+            .text{
+                margin-left: .08rem;
+            }
+
+            &.on{
+                .icon-check_circle{
+                    color: rgb(0, 160, 220);
+                }
+            }
+        }
+    }
+}
