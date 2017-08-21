@@ -37,7 +37,8 @@ class GoodItem extends Component{
     }
 
     render() {
-        const { food: { name, image, description, sellCount, rating, price, oldPrice }, handleAddClick, handleSubClick } = this.props;
+        const { food: { name, image, description, sellCount, rating, price, oldPrice }, handleAddClick, handleSubClick, showContent} = this.props;
+        // console.log(showContent);
 
         return (
             <div className="food">
@@ -64,7 +65,10 @@ class GoodItem extends Component{
 const GoodsList = props => (
     <ul className="foods-list">
         {props.foods.map((item, index) => (
-            <li key={index} className="foods-item border-1px">
+            <li key={index} className="foods-item border-1px" onClick={() => {
+                        props.showContent(item);
+                        {/* console.log(props.showContent); */}
+                    }}>
                 <GoodItem food={item} {...props}/>
             </li>
         ))}
@@ -91,6 +95,9 @@ export class Goods extends Component {
         this.handleSubClick = this.handleSubClick.bind(this);
         this.handleAddClick = this.handleAddClick.bind(this);
         this.handleCartClear = this.handleCartClear.bind(this);
+        this.showContent = this.showContent.bind(this);
+        this.closeDetail = this.closeDetail.bind(this);
+        this.handleAdd = this.handleAdd.bind(this);
 
         this.state = {
             goods: [],
@@ -159,6 +166,7 @@ export class Goods extends Component {
         this.setState({
             cart: cart
         });
+        e.stopPropagation();
     }
 
     handleAddClick(e) {
@@ -182,6 +190,28 @@ export class Goods extends Component {
         this.setState({
             cart: cart
         });
+        e.stopPropagation();
+    }
+
+    handleAdd(foodname, price) {
+        const cart = this.state.cart;
+        let exist = false;
+        if(cart.length === 0) {
+            cart.push({name: foodname, price: price, count: 1});
+        }else{
+            for(const value of cart) {
+                if(foodname === value.name) {
+                    value.count++;
+                    exist = true;
+                }
+            }
+            if(!exist) {
+                cart.push({name: foodname, price: price, count: 1});
+            }
+        }
+        this.setState({
+            cart: cart
+        });
     }
 
     handleCartClear() {
@@ -191,10 +221,17 @@ export class Goods extends Component {
         });
     }
 
-    showDetail(food){
+    showContent(food){
         this.setState({
             showDetail: true,
             foodDetail: food
+        });
+    }
+
+    closeDetail(){
+        this.setState({
+            showDetail: false,
+            foodDetail: null
         });
     }
 
@@ -224,10 +261,10 @@ export class Goods extends Component {
                         </ul>
                     </nav>
                     <div className="goods-wrapper" ref="goods">
-                        <GoodsWrapper goods={goods} cart={this.state.cart} handleSubClick={this.handleSubClick} handleAddClick={this.handleAddClick} />
+                        <GoodsWrapper goods={goods} cart={this.state.cart} handleSubClick={this.handleSubClick} handleAddClick={this.handleAddClick} showContent={this.showContent}/>
                     </div>
                 </div>
-                <GoodContent show={showDetail} food={foodDetail} closeDetail={this.closeDetail} />
+                <GoodContent show={showDetail} food={foodDetail} closeDetail={this.closeDetail} cart={this.state.cart} handleSubClick={this.handleSubClick} handleAddClick={this.handleAddClick} handleAdd={this.handleAdd}/>
                 <Cart deliveryPrice={deliveryPrice} cart={this.state.cart} 
                 handleClear={this.handleCartClear} handleAddClick={this.handleAddClick} handleSubClick={this.handleSubClick} minPrice={minPrice} />
             </div>
